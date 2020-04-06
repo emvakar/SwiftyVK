@@ -22,7 +22,7 @@ class KeychainProvider<EntityType> {
         else {
             // Because Xcode 10 has a bug - http://openradar.appspot.com/49262697
             // swiftlint:disable next compiler_protocol_init
-            let selector = Selector(stringLiteral: "archivedDataWithRootObject:")
+            let selector = #selector(NSKeyedArchiver.archivedData(withRootObject:))
             // swiftlint:disable next force_cast force_unwrapping
             data = NSKeyedArchiver.perform(selector, with: entity)!.takeRetainedValue() as! Data
         }
